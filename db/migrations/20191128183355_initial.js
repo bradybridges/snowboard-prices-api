@@ -10,7 +10,7 @@ exports.up = function(knex) {
     }),
     knex.schema.createTable('boards', (table) => {
       table.integer('brandId').unsigned();
-      table.foreign('brandId').references('brands.brandId');
+      table.foreign('brandId').onDelete('CASCADE').references('brands.brandId');
       table.string('name');
       table.double('price').unsigned();
       table.string('url');
