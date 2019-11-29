@@ -64,6 +64,56 @@ app.get('/api/v1/boards/:brand', (request, response) => {
     .catch((error) => response.status(500).json( { error }));
 });
 
+app.post('/api/v1/boards', (req, resp) => {
+  const receivedData = req.body;
+  for( let requiredParams of ['brandId', 'name', 'price', 'url']) {
+    if(!receivedData[requiredParams]) {
+      return resp
+        .status(422)
+        .send({ error: `Expected { brandId: <Integer>, name: <String>, price: <Double>, url: <String>} Missing ${requiredParams}!`});
+    }
+  }
+  database('boards')
+    .insert(receivedData, 'name')
+    .then((newBoard) => {
+      resp.status(201).json(newBoard);
+    })
+    .catch((err) => resp.status(500).json({ err }));
+});
+
+app.patch('/api/v1/boards', (request, response) => {
+  const receivedData = request.body;
+  for(let requiredParams of ['name', 'price']) {
+    if(!receivedData[requiredParams]) {
+      return response
+        .status(422)
+        .send({ error: `Expected { name: <String>, price: <Double> } Your missing ${requiredParams}!`})
+    }
+  }
+  database('boards')
+    .where('name', receivedData.name)
+    .update({
+      price: receivedData.price
+    })
+    .then(() => response.status(200).json({ message: `${receivedData.name} changed to $${receivedData.price}`}))
+    .catch((err) => response.status(500).json({ err }));
+});
+
+app.delete('/api/v1/brands/:brand', (request, response) => {
+  database('brands')
+    .where('name', request.params.brand)
+    .del()
+    .then(() => response.status(202).json({ message: `Successfully deleted ${request.params.brand}`}))
+    .catch((err) => response.status(500).json({ err }));
+});
+
+// knex('books')
+//   .where('published_date', '<', 2000)
+//   .update({
+//     status: 'archived',
+//     thisKeyIsSkipped: undefined
+//   })
+
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on http://localhost:${app.get('port')}.`);
 });   
