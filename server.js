@@ -40,6 +40,26 @@ app.get('/api/v1/brands/:name', (request, response) => {
     .catch((err) => response.status(500).json({ err }));
 });
 
+app.get('/api/v1/boards', (request, response) => {
+  database('boards')
+    .orderBy('name')
+    .then((boards) => {
+      response.status(200).json(boards);
+    })
+    .catch((err) => response.status(500).json({ err }));
+});
+
+app.get('/api/v1/boards/:brand', (request, response) => {
+  database('brands')
+    .select('boards.name', 'boards.price', 'boards.url')
+    .innerJoin('boards', 'brands.brandId', 'boards.brandId')
+    .where('brands.name', request.params.brand)
+    .then((boards) => {
+      response.status(200).json(boards);
+    })
+    .catch((error) => response.status(500).json( { error }));
+});
+
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on http://localhost:${app.get('port')}.`);
 });   
