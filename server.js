@@ -102,17 +102,32 @@ app.patch('/api/v1/boards', (request, response) => {
 app.delete('/api/v1/brands/:brand', (request, response) => {
   database('brands')
     .where('name', request.params.brand)
-    .del()
-    .then(() => response.status(202).json({ message: `Successfully deleted ${request.params.brand}`}))
+    .then((brand) => {
+      if(!brand.length) {
+        return response.status(404).json({ error: `Brand with name ${request.params.brand} not found` });
+      }
+      database('brands')
+        .where('name', request.params.brand)
+        .del()
+        .then(() => response.status(202).json({ message: `Successfully deleted ${request.params.brand}` }));
+    })
     .catch((err) => response.status(500).json({ err }));
 });
 
-// knex('books')
-//   .where('published_date', '<', 2000)
-//   .update({
-//     status: 'archived',
-//     thisKeyIsSkipped: undefined
-//   })
+app.delete('/api/v1/boards/:name', (request, response) => {
+  database('boards')
+    .where('name', request.params.name)
+    .then((board) => {
+      if(!board.length) {
+        return response.status(404).json({ error: `Board with name ${request.params.name} not found!` });
+      }
+      database('boards')
+        .where('name', request.params.name)
+        .del()
+        .then(() => response.status(202).json({ message: `Successfully deleted ${request.params.name}:/`}))
+    })
+    .catch((err) => response.status(500).json({ err }));
+});
 
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on http://localhost:${app.get('port')}.`);
