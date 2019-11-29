@@ -2,7 +2,8 @@
 exports.up = function(knex) {
   return Promise.all([
     knex.schema.createTable('brands', (table) => {
-      table.increments('brandId').primary();
+      table.increments('id').primary();
+      table.integer('brandId').unique();
       table.string('name');
       table.string('url');
       table.timestamps(true, true);

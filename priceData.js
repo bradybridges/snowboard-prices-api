@@ -1,6 +1,8 @@
-export const snowboardData = [
+const snowboardData = [
   { 
-    name: 'Arbor', 
+    name: 'Arbor',
+    url: 'test',
+    brandId: 1, 
     boards: [
       {
         brandId: 1,
@@ -246,6 +248,8 @@ export const snowboardData = [
   },
   {
     name: 'Bataleon',
+    url: 'test',
+    brandId: 2, 
     boards: [
       {
         brandId: 2,
@@ -317,6 +321,8 @@ export const snowboardData = [
   },
   {
     name: 'Burton',
+    url: 'test',
+    brandId: 3, 
     boards: [
       {
         brandId: 3,
@@ -562,6 +568,8 @@ export const snowboardData = [
   },
   {
     name: 'CAPiTA',
+    url: 'test',
+    brandId: 4, 
     boards: [
       {
         brandId: 4,
@@ -711,6 +719,8 @@ export const snowboardData = [
   },
   {
     name: 'Chamonix',
+    url: 'test',
+    brandId: 5, 
     boards: [
       {
         brandId: 5,
@@ -878,6 +888,8 @@ export const snowboardData = [
   },
   {
     name: 'DC',
+    url: 'test',
+    brandId: 6, 
     boards: [
       {
         brandId: 6,
@@ -1039,6 +1051,8 @@ export const snowboardData = [
   },
   {
     name: 'Evol',
+    url: 'test',
+    brandId: 7, 
     boards: [
       {
         brandId: 7,
@@ -1086,6 +1100,8 @@ export const snowboardData = [
   },
   {
     name: 'GNU',
+    url: 'test',
+    brandId: 8, 
     boards: [
       {
         brandId: 8,
@@ -1259,6 +1275,8 @@ export const snowboardData = [
   },
   {
     name: 'Head',
+    url: 'test',
+    brandId: 9, 
     boards: [
       {
         brandId: 9,
@@ -1270,6 +1288,8 @@ export const snowboardData = [
   },
   {
     name: 'Jones',
+    url: 'test',
+    brandId: 10, 
     boards: [
       {
         brandId: 10,
@@ -1401,6 +1421,8 @@ export const snowboardData = [
   },
   {
     name: 'K2',
+    url: 'test',
+    brandId: 11, 
     boards: [
       {
         brandId: 11,
@@ -1496,6 +1518,8 @@ export const snowboardData = [
   },
   {
     name: 'Lib Tech',
+    url: 'test',
+    brandId: 12, 
     boards: [
       {
         brandId: 12,
@@ -1741,6 +1765,8 @@ export const snowboardData = [
   },
   {
     name: 'Nitro',
+    url: 'test',
+    brandId: 13, 
     boards: [
       {
         brandId: 13,
@@ -1902,6 +1928,8 @@ export const snowboardData = [
   },
   {
     name: 'Ride',
+    url: 'test',
+    brandId: 14, 
     boards: [
       {
         brandId: 14,
@@ -2003,6 +2031,8 @@ export const snowboardData = [
   },
   {
     name: 'Rome',
+    url: 'test',
+    brandId: 15, 
     boards: [
       {
         brandId: 15,
@@ -2122,6 +2152,8 @@ export const snowboardData = [
   },
   {
     name: 'Rossignol',
+    url: 'test',
+    brandId: 16, 
     boards: [
       {
         brandId: 16,
@@ -2301,6 +2333,8 @@ export const snowboardData = [
   },
   {
     name: 'Solomon',
+    url: 'test',
+    brandId: 17, 
     boards: [
       {
         brandId: 17,
@@ -2456,6 +2490,8 @@ export const snowboardData = [
   },
   {
     name: 'Slash',
+    url: 'test',
+    brandId: 18, 
     boards: [
       {
         brandId: 18,
@@ -2479,6 +2515,8 @@ export const snowboardData = [
   },
   {
     name: 'Weston',
+    url: 'test',
+    brandId: 19, 
     boards: [
       {
         brandId: 19,
@@ -2538,6 +2576,8 @@ export const snowboardData = [
   },
   {
     name: 'Yes.',
+    url: 'test',
+    brandId: 20, 
     boards: [
       {
         brandId: 20,
@@ -2620,3 +2660,5 @@ export const snowboardData = [
     ]
   }
 ];
+
+module.exports = snowboardData;
