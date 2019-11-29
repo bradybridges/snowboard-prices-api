@@ -55,7 +55,11 @@ app.get('/api/v1/boards/:brand', (request, response) => {
     .innerJoin('boards', 'brands.brandId', 'boards.brandId')
     .where('brands.name', request.params.brand)
     .then((boards) => {
-      response.status(200).json(boards);
+      if(boards.length) {
+        response.status(200).json(boards);
+      } else {
+        response.status(404).json({ error: `No boards by ${request.params.brand} found`});
+      }
     })
     .catch((error) => response.status(500).json( { error }));
 });
